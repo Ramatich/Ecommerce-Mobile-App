@@ -1,4 +1,4 @@
-package com.success.ecommerce;
+package com.success.ecommerce
 
 import org.junit.Test;
 
