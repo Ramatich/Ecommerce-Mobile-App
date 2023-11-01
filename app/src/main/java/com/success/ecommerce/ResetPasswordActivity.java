@@ -3,9 +3,9 @@ package com.success.ecommerce;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -96,7 +96,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
              reference.child("Security Questions").updateChildren(userDataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                  @Override
-                 public void onComplete(@NonNull Task<Void> task) {
+                 public void onComplete(Task<Void> task) {
                      if (task.isSuccessful()){
                          Toast.makeText(ResetPasswordActivity.this, "Security questions successfully saved", Toast.LENGTH_SHORT).show();
 
@@ -113,7 +113,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
          reference.child("Security Questions").addValueEventListener(new ValueEventListener() {
              @Override
-             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+             public void onDataChange(DataSnapshot dataSnapshot) {
                  if (dataSnapshot.exists()){
 
                      String ans1 = dataSnapshot.child("answer1").getValue().toString();
@@ -125,7 +125,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
              }
 
              @Override
-             public void onCancelled(@NonNull DatabaseError databaseError) {
+             public void onCancelled(DatabaseError databaseError) {
 
              }
          });
@@ -143,7 +143,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()){
                         String mPhone = dataSnapshot.child("phone").getValue().toString();
 
@@ -174,7 +174,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                             reference.child("password").setValue(newPassword.getText().toString())
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                        public void onComplete(Task<Void> task) {
                                                             Toast.makeText(ResetPasswordActivity.this,
                                                                     "password changed..", Toast.LENGTH_SHORT).show();
                                                             startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
@@ -202,7 +202,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                public void onCancelled(DatabaseError databaseError) {
 
                 }
             });

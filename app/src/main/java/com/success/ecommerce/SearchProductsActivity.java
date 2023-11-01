@@ -1,11 +1,11 @@
 package com.success.ecommerce;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +59,7 @@ public class SearchProductsActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
+            protected void onBindViewHolder(ProductViewHolder holder, int position, final Products model) {
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText("Price = N"+model.getPrice());
@@ -75,9 +75,8 @@ public class SearchProductsActivity extends AppCompatActivity {
                 });
             }
 
-            @NonNull
             @Override
-            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            public ProductViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
                 View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.product_items_layout, viewGroup, false);
                 ProductViewHolder holder = new ProductViewHolder(view);
 

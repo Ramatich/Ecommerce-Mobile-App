@@ -1,8 +1,8 @@
 package com.success.ecommerce;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -93,7 +93,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
         orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
+            public void onComplete(Task<Void> task) {
                 if (task.isSuccessful()){
                     FirebaseDatabase.getInstance().getReference().child("Cart List")
                             .child("User View")
@@ -101,7 +101,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                             .removeValue()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                                public void onComplete(Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(ConfirmFinalOrderActivity.this, "Final Order Confirmed.."+totalAmount, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);

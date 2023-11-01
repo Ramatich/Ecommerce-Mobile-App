@@ -4,9 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -167,7 +167,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             uplaodTask.continueWithTask(new Continuation() {
                 @Override
-                public Object then(@NonNull Task task) throws Exception {
+                public Object then(Task task) throws Exception {
                     if (!task.isSuccessful()){
                         throw task.getException();
                     }
@@ -175,7 +175,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
-                public void onComplete(@NonNull Task<Uri> task) {
+                public void onComplete(Task<Uri> task) {
                     if (task.isSuccessful()){
                         Uri downloadUri = task.getResult();
                         myUri = downloadUri.toString();
@@ -209,7 +209,7 @@ public class SettingsActivity extends AppCompatActivity {
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("image").exists()){
                         String image = dataSnapshot.child("image").getValue().toString();
@@ -226,7 +226,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });

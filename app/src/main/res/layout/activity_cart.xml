@@ -38,14 +38,14 @@
         android:visibility="gone"
         />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.appcompat.widget.RecyclerView
         android:id="@+id/cart_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/rel1"
         android:layout_above="@+id/next_process_btn">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.appcompat.widget.RecyclerView>
 
     <Button
         android:id="@+id/next_process_btn"

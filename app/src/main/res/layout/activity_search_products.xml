@@ -30,23 +30,22 @@
             android:id="@+id/search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/search_product_name"
+            android:background="@color/colorPrimaryDark"
             android:padding="9dp"
+            android:text="Search"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_centerInParent="true"
-            android:background="@color/colorPrimaryDark"
-            android:layout_toRightOf="@+id/search_product_name"
-            />
+            android:textStyle="bold" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.appcompat.widget.RecyclerView
         android:id="@+id/search_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/r5">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.appcompat.widget.RecyclerView>
 
 </RelativeLayout>

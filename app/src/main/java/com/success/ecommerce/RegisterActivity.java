@@ -3,8 +3,8 @@ package com.success.ecommerce;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!(dataSnapshot.child("Users").child(phone).exists())){
 
                     HashMap<String, Object> userDataMap = new HashMap<>();
@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     rootRef.child("Users").child(phone).updateChildren(userDataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(Task<Void> task) {
 
                             if (task.isSuccessful()){
                             Toast.makeText(RegisterActivity.this, "Congratulations your account has been created",Toast.LENGTH_LONG).show();
@@ -115,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });

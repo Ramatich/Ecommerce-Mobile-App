@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -44,7 +44,7 @@
 
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView

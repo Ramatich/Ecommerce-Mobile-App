@@ -1,2 +1,2 @@
-# eCommerce
-An eCommerce Mobile App like Amazon or Ali express App
+# ACME Department
+Buying and selling online

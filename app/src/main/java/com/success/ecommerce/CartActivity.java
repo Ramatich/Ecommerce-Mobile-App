@@ -2,12 +2,13 @@ package com.success.ecommerce;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +81,7 @@ public class CartActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
+            protected void onBindViewHolder(CartViewHolder holder, int position, final Cart model) {
                 holder.txtProductQuantity.setText("Quantity = "+model.getQuantity());
                 holder.txtProductPrice.setText("Price = N"+model.getPrice());
                 holder.txtProductName.setText(model.getPname());
@@ -112,7 +113,7 @@ public class CartActivity extends AppCompatActivity {
                                            .child("Products").child(model.getPid()).removeValue()
                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                @Override
-                                               public void onComplete(@NonNull Task<Void> task) {
+                                               public void onComplete(Task<Void> task) {
                                                    if (task.isSuccessful()){
                                                        Toast.makeText(CartActivity.this, "Item Removed from Cart",Toast.LENGTH_SHORT).show();
                                                        startActivity(new Intent(CartActivity.this,HomeActivity.class));
@@ -129,9 +130,8 @@ public class CartActivity extends AppCompatActivity {
                 txtTotalamount.setText("Total Price = N"+ overTotalPrice);
             }
 
-            @NonNull
             @Override
-            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            public CartViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
                 View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cart_items_layout, viewGroup,false);
                 CartViewHolder holder = new CartViewHolder(view);
                 return holder;
@@ -147,7 +147,7 @@ public class CartActivity extends AppCompatActivity {
 
         orderRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     String shippingState = dataSnapshot.child("state").getValue().toString();
                     String userName = dataSnapshot.child("name").getValue().toString();
@@ -175,7 +175,7 @@ public class CartActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
