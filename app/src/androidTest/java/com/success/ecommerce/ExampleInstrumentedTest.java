@@ -1,4 +1,4 @@
-package com.success.ecommerce
+package com.success.ecommerce;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
